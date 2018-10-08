@@ -1,0 +1,215 @@
+.back-end-sidebar {
+    height: 100vh;
+    min-height: 100vh;
+    background-color: #2A3F54;
+    color: #fff;
+    position: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 310px;
+}
+.sidebarHeadding {
+    padding: 15px;
+}
+.sidebarHeadding h2 {
+    text-align: center;
+}
+.sidebarHeadding h2 i {
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 50%;
+}
+.sidebarHeadding h2 i {
+    margin-right: 33px;
+}
+.personalInfo {
+    padding: 0 0 10px 15px;
+    margin-bottom: 30px;
+    border-bottom: 1px dashed #888;
+}
+.personalInfo img {
+    margin-left: 20px;
+}
+.personalInfo h3 {
+    font-size: 15px;
+    font-weight: 700;
+}
+.sidbarMenu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidbarMenu ul li a{
+    display:block;
+    padding: 10px 15px;
+    margin-bottom: 2px;
+    color:#fff;
+    text-decoration: none;
+    position:relative;
+}
+
+.sidbarMenu ul li a i {
+    padding-right: 10px;
+}
+.sidbarMenu ul li a span {
+    position: absolute;
+    right: 20px;
+    top: 14px;
+    font-size: 10px;
+}
+.sidbarMenu ul li ul{
+    position:relative;
+    background-color:#2A3F54;
+}
+.sidbarMenu ul li ul li {
+    padding-left:30px;
+    position:relative;
+    border:none;
+}
+.sidbarMenu ul li ul li::before {
+    background: #425668;
+    bottom: auto;
+    content: "";
+    height: 8px;
+    left: 23px;
+    margin-top: 15px;
+    position: absolute;
+    right: auto;
+    width: 8px;
+    z-index: 1;
+    border-radius: 50%;
+}
+.sidbarMenu ul li ul li::after {
+    border-left: 1px solid #425668;
+    bottom: 0;
+    content: "";
+    left: 27px;
+    position: absolute;
+    top: 0;
+}
+.sidbarMenu ul li ul li > a {
+    padding-left: 15px;
+    padding-right: 8px;
+    padding-bottom:8px;
+    padding-top:8px;
+    font-size:13px;
+    margin:0
+}
+.sidbarMenu ul li ul li a:hover{
+    background-color:#35495D;
+}
+.sidbarMenu ul li ul li:hover{
+    background-color:#35495D;
+}
+.active {
+    background-color: #35495D;
+    box-shadow: 0 0 2px #000;
+    border-right:5px solid #1ABB9C;
+}
+.sidbarMenu li a{
+    cursor:pointer;
+}
+.back-end-header {
+    height: 60px;
+    background-color: #009270;
+}
+.totalBody .col-md-3 {
+    padding-right: 0;
+}
+.totalBody .col-md-9 {
+    padding-left: 0;
+}
+
+.back-end-header-menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: right;
+    margin-right:15px;
+}
+.back-end-header-menu li {
+    display: inline-block;
+    position:relative;
+}
+.back-end-header-menu li a{
+    display:block;
+    padding: 15px 10px;
+    text-decoration: none;
+    cursor:pointer;
+    border-left:1px solid #d0e9c6;
+    color:#fff !important;
+}
+.back-end-header-menu li a i {
+    font-size: 22px;
+    color:#fff;
+}
+.back-end-header-menu li a span{
+    font-size:10px;
+}
+.back-end-header-menu li ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    width: 250px;
+    right: -16px;
+    background: #F5F5F5;
+    transition: .3s;
+    bottom: -160px;
+}
+.back-end-header-menu li ul::before {
+    border-bottom: 10px solid #DDDDDD;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: absolute;
+    content: "";
+    right: 18px;
+    top: -10px;
+}
+.back-end-header-menu li ul li {
+    display: block;
+    border-bottom: 1px solid #ccc;
+}
+.back-end-header-menu li ul li a {
+    text-align: left;
+    padding: 10px;
+    color:#000 !important;
+}
+.back-end-header-menu li ul li a i {
+    text-align: right;
+    right: 20px;
+    position: absolute;
+    top: 15px;
+    font-size:14px;
+    color:#000;
+}
+.back-end-header-menu li:last-child {
+    left: auto;
+    right: 0;
+}
+.main_content {
+    margin-top:5px;
+    background-color: #ddd;
+    padding: 20px;
+}
+
+.main_heading {
+    background-color: #4A4A4A;
+    height: 60px;
+    margin-top: 10px;
+}
+.main_heading h2 {
+    display: inline-block;
+    color: #f5f5f5;
+    margin-left: 22px;
+    margin-top: 17px;
+    font-size: 20px;
+}
+.main_heading a{
+    float:right;
+    margin-top: 16px;
+    margin-right: 20px;
+}
