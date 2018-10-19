@@ -53,6 +53,51 @@ $(function() {
 		deadline_date();
 	});
 
+	$("#checkAll").click(function() {
+		$("#short_list").toggleClass("showHidden");
+		$('input:checkbox').not(this).prop('checked', this.checked);
+	});
+
+
+
+
+
+	/*$("#filter_name_of_exam").click(function() {
+		var data = $("#filter_name_of_exam").val();
+		if(data == "ssc"){
+			$("#filter_ssc_hsc_group").show();
+			$("#filter_honors_masters_group").hide();
+		}else if(data == "bsc honors"){
+			$("#filter_honors_masters_group").show();
+			$("#filter_ssc_hsc_group").hide();
+		}
+	});*/
+
+
+	$("#filter_name_of_exam").click(function () {
+		var data = $("#filter_name_of_exam").val();
+		if (data == "ssc" || data == "dakhel"  || data == "0 level"  || data == "hsc"  || data == "alim"  || data == "a level"  || data == "diploma" ) {
+			$("#filter_ssc_hsc_group").show();
+			$("#filter_honors_masters_group").hide();
+			$("#demo_group").hide();
+		} else if (data == "bsc honors" || data == "bsc eng" || data == "bcom honors" || data == "ba honors" || data == "bss honors" || data == "bbs honors" || data == "bed honors" || data == "llb honors" || data == "bba" || data == "bsc" || data == "bcom" || data == "ba" || data == "bss" || data == "bbs" || data == "bed" || data == "b.pharm" || data == "MSc" || data == "MCom" || data == "MBS" || data == "MBA" || data == "MBM" || data == "MSS" || data == "MA" || data == "MEng" || data == "MSS" || data == "MDS" || data == "MED" || data == "M.Pharm" || data == "MOthers") {
+			$("#filter_honors_masters_group").show();
+			$("#filter_ssc_hsc_group").hide();
+			$("#demo_group").hide();
+		}
+	});
+
+
+
+
+
+
+
+
+	$("#singleCheckAll").click(function () {
+		$("#short_list").toggleClass("showHidden");
+	});
+
 	function check_post_name() {
 		var post_name_length = $("#post_name").val().length;
 		var pattern = new RegExp(/^[a-zA-Z\s\)\(._-]+$/);
@@ -178,6 +223,7 @@ $(function() {
 			error_advertisement_date = false;
 		}
 	}
+
 	function deadline_date() {
 		var job_res = $("#deadline").val().length;
 		if(job_res == 0) {

@@ -159,6 +159,7 @@
     background: #F5F5F5;
     transition: .3s;
     bottom: -160px;
+    z-index:99;
 }
 .back-end-header-menu li ul::before {
     border-bottom: 10px solid #DDDDDD;
@@ -212,4 +213,42 @@
     float:right;
     margin-top: 16px;
     margin-right: 20px;
+}
+
+/*DataTable Design*/
+.dataTables_wrapper .dataTables_filter input {
+    width: 466px;
+    height: 35px;
+    font-size: 18px;
+    font-weight: 400;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+#table_id_length select {
+    height: 35px;
+    width: 50px;
+    border: 1px solid #ddd;
+}
+table.dataTable.no-footer {
+    border-bottom: 3px solid #ddd;
+    border-top: 3px solid #ddd;
+}
+table.display thead th {
+    padding: 8px 18px 8px 10px;
+    border-bottom: 1px solid #ddd;
+    font-weight: 700;
+    cursor: pointer;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 2px 15px !important;
+}
+.dataTables_wrapper .dataTables_info {
+    padding-top: 20px !important;
+}
+.dataTables_wrapper .dataTables_paginate {
+    padding-top: 20px !important;
+}
+.showHidden{
+    pointer-events: none;
+    opacity: .5;
 }

@@ -7,8 +7,11 @@ use DB;
 class AdvertisementController extends Controller {
 
     public function manageAdvertisement(){
-        $advertisements = DB::table('advertisements')->select('id', 'post_name','advertisement_date','deadline','publication_status')->orderBy('id', 'desc')->get();
-        return view('back-end.advertisement.manage',[
+        $advertisements = DB::table('advertisements')
+            ->select('id', 'post_name','advertisement_date','deadline','publication_status')
+            ->orderBy('id', 'desc')
+            ->get();
+        return view('back-end.advertisement.manage', [
             'advertisements'=>$advertisements
         ]);
     }
@@ -84,6 +87,7 @@ class AdvertisementController extends Controller {
         $singleAdvertisement = DB::table('advertisements')->select()->where('id', $id)->first();
         return view('back-end.advertisement.edit',['singleAdvertisement'=> $singleAdvertisement]);
     }
+
     protected function updateAdvertisementInfo($request){
         DB::table('advertisements')->where('id',$request->id)->update([
             'post_name' => $request->post_name,
@@ -114,5 +118,178 @@ class AdvertisementController extends Controller {
     public function deleteAdvertisement($id){
         DB::table('advertisements')->where('id', '=', $id)->delete();
         return redirect('manage-advertisement')->with('message','Advertisements Deleted.');
+    }
+
+    public function appliedList(){
+        $applied_lists = DB::table('online_applies')
+            ->select('id', 'unique_apply_id','post_id','post_name','totalExperince','skills','photo')
+            ->where('status', '=', 0)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return view('back-end.applied-list.manage',[
+            'applied_lists'=>$applied_lists
+        ]);
+    }
+
+    public function saveShortList(Request $request){
+        $shortListIds = $request->checkSingle;
+        //dd($shortListIds);
+        foreach($shortListIds as $shortListId){
+
+            DB::table('online_applies')->where('id',$shortListId)->update([
+                'status' => 1,
+            ]);
+        }
+
+        foreach($shortListIds as $shortListId){
+            DB::table('short_lists')->insert([
+                'online_applied_id' => $shortListId,
+                'publication_status' => 0,
+            ]);
+        }
+
+        return back()->with('message',"Send to Short List !");
+    }
+
+    public function shortList(){
+
+        $shortLists = DB::table('short_lists')
+            ->leftJoin('online_applies', 'online_applies.id', '=', 'short_lists.online_applied_id')
+            ->where('status','=',1)
+            ->where('publication_status','=',0)
+            ->get();
+
+        //return $shortLists;
+
+        return view('back-end.applied-list.shortList',[
+            'shortLists'=>$shortLists
+        ]);
+    }
+
+    public function saveWrittenList(Request $request){
+        $writtenListIds = $request->checkSingle;
+        //dd($shortListIds);
+        foreach($writtenListIds as $writtenListId){
+
+            DB::table('online_applies')->where('id',$writtenListId)->update([
+                'status' => 2,
+            ]);
+        }
+
+        foreach($writtenListIds as $writtenListId){
+            DB::table('short_lists')->where('online_applied_id',$writtenListId)->update([
+                'publication_status' => 1,
+            ]);
+        }
+
+        foreach($writtenListIds as $writtenListId){
+            DB::table('written_lists')->insert([
+                'online_applied_id' => $writtenListId,
+                'publication_status' => 0,
+            ]);
+        }
+
+        return back()->with('message',"Send to Written List");
+    }
+
+
+    public function writtentList(){
+
+        $writtenLists = DB::table('written_lists')
+            ->leftJoin('online_applies', 'online_applies.id', '=', 'written_lists.online_applied_id')
+            ->where('status','=',2)
+            ->where('publication_status','=',0)
+            ->get();
+
+        //return $shortLists;
+
+        return view('back-end.applied-list.writtenList',[
+            'writtenLists'=>$writtenLists
+        ]);
+    }
+
+
+    public function saveVavaList(Request $request){
+
+        $vivaListIds = $request->checkSingle;
+        //dd($vivaListIds);
+        foreach($vivaListIds as $vivaListId){
+
+            DB::table('online_applies')->where('id',$vivaListId)->update([
+                'status' => 3,
+            ]);
+        }
+
+        foreach($vivaListIds as $vivaListId){
+            DB::table('written_lists')->where('online_applied_id',$vivaListId)->update([
+                'publication_status' => 1,
+            ]);
+        }
+
+        foreach($vivaListIds as $vivaListId){
+            DB::table('viva_lists')->insert([
+                'online_applied_id' => $vivaListId,
+                'publication_status' => 0,
+            ]);
+        }
+
+        return back()->with('message',"Send to Viva List");
+    }
+
+    public function vivaList(){
+
+        $vivaLists = DB::table('viva_lists')
+            ->leftJoin('online_applies', 'online_applies.id', '=', 'viva_lists.online_applied_id')
+            ->where('status','=',3)
+            ->where('publication_status','=',0)
+            ->get();
+
+        //return $vivaLists;
+
+        return view('back-end.applied-list.vivaList',[
+            'vivaLists'=>$vivaLists
+        ]);
+    }
+    public function saveFinalList(Request $request){
+
+        $finalListIds = $request->checkSingle;
+        //dd($vivaListIds);
+        foreach($finalListIds as $finalListId){
+
+            DB::table('online_applies')->where('id',$finalListId)->update([
+                'status' => 4,
+            ]);
+        }
+
+        foreach($finalListIds as $finalListId){
+            DB::table('viva_lists')->where('online_applied_id',$finalListId)->update([
+                'publication_status' => 1,
+            ]);
+        }
+
+        foreach($finalListIds as $finalListId){
+            DB::table('final_lists')->insert([
+                'online_applied_id' => $finalListId,
+                'publication_status' => 0,
+            ]);
+        }
+
+        return back()->with('message',"Send to Final List");
+    }
+
+    public function finalList(){
+
+        $finalLists = DB::table('final_lists')
+            ->leftJoin('online_applies', 'online_applies.id', '=', 'final_lists.online_applied_id')
+            ->where('status','=',4)
+            ->where('publication_status','=',0)
+            ->get();
+
+        //return $vivaLists;
+
+        return view('back-end.applied-list.finalList',[
+            'finalLists'=>$finalLists
+        ]);
     }
 }

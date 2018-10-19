@@ -47,7 +47,7 @@
                             <h4>Read Before Apply</h4>
                             <p><span class="text-danger">*Photograph</span> must be enclosed with the resume. </p>
                             <p>Apply Procedures </p>
-                            <a href="{{ route('apply-online',['id' => $advertisement->id ]) }}" class="btn btn-success"> Apply Online </a>
+                            <a href="{{ route('apply-online',['id' => $advertisement->id, 'post_name'=> $advertisement->post_name ]) }}" class="btn btn-success"> Apply Online </a>
                         </div>
                     <p class="font-weight-bold">Company Info</p>
                     <?php $str = $advertisement->company_info;

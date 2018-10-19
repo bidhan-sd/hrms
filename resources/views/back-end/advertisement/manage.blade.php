@@ -13,7 +13,7 @@
                     {{ $message }}
                 </div>
             @endif
-            <table id="table_id" class="table table-bordered table-hover table-striped text-center">
+            <table id="table_id" class="display table table-bordered table-hover table-striped text-center">
                 <thead class="bg-info text-white">
                 <tr>
                     <th>#</th>

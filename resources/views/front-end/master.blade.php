@@ -17,7 +17,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('font-end/css/font-end-style.css') }}" rel="stylesheet">
+    <link href="{{ asset('front-end/css/font-end-style.css') }}" rel="stylesheet">
+
 </head>
 <body>
 <div class="container">
@@ -53,5 +54,9 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="{{ asset('front-end/js/jquery-3.3.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('front-end/js/main.js') }}"></script>
+
 </body>
 </html>

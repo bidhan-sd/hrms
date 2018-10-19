@@ -16,9 +16,13 @@ Route::get('advertisement-single.java/{id}',[
     'uses' => 'FrontendController@advertisementSingle',
     'as' => 'advertisement-single',
 ]);
-Route::get('apply-online.java',[
+Route::get('apply-online.java/{id}/{post_name}',[
     'uses' => 'FrontendController@applyOnline',
     'as' => 'apply-online',
+]);
+Route::post('save-onlineApply.java',[
+    'uses' => 'FrontendController@saveOnlineApply',
+    'as' => 'save-onlineApply',
 ]);
 
 Route::group(['middleware' => 'auth'], function(){
@@ -59,6 +63,42 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('delete-advertisement/{id}',[
         'uses' => 'AdvertisementController@deleteAdvertisement',
         'as'   => 'delete-advertisement'
+    ]);
+    Route::get('applied-list',[
+        'uses' => 'AdvertisementController@appliedList',
+        'as'   => 'applied-list'
+    ]);
+    Route::post('save-shortList',[
+        'uses' => 'AdvertisementController@saveShortList',
+        'as'   => 'save-shortList'
+    ]);
+    Route::get('short-list',[
+        'uses' => 'AdvertisementController@shortList',
+        'as'   => 'short-list'
+    ]);
+    Route::post('save-writtenList',[
+        'uses' => 'AdvertisementController@saveWrittenList',
+        'as'   => 'save-writtenList'
+    ]);
+    Route::get('written-list',[
+        'uses' => 'AdvertisementController@writtentList',
+        'as'   => 'written-list'
+    ]);
+    Route::post('save-vivaList',[
+        'uses' => 'AdvertisementController@saveVavaList',
+        'as'   => 'save-vivaList'
+    ]);
+    Route::get('viva-list',[
+        'uses' => 'AdvertisementController@vivaList',
+        'as'   => 'viva-list'
+    ]);
+    Route::post('save-finalList',[
+        'uses' => 'AdvertisementController@saveFinalList',
+        'as'   => 'save-finalList'
+    ]);
+    Route::get('final-list',[
+        'uses' => 'AdvertisementController@finalList',
+        'as'   => 'final-list'
     ]);
 
 });

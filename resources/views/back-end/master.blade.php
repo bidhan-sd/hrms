@@ -18,7 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('back-end/css/back-end-style.css') }}" rel="stylesheet">
+    <link href="{{ asset('back-end/css/bootstrap.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link href="{{ asset('back-end/css/jquery.dataTables.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 
@@ -27,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('back-end/ckeditor/samples/css/samples.css') }}">
     <link rel="stylesheet" href="{{ asset('back-end/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css') }}">
 
+    <link href="{{ asset('back-end/css/back-end-style.css') }}" rel="stylesheet">
 </head>
 <body>
 <div class="container-fluid totalBody">
@@ -61,11 +64,11 @@
                             <a id="myLink"> <i class="fas fa-user"></i> Recruitments <span class="fas fa-chevron-down"></span></a>
                             <ul id="demo2" class="collapse">
                                 <li><a href="{{ route('manage-advertisement') }}"> Advertisement</a></li>
-                                <li><a href=""> Applied List</a></li>
-                                <li><a href=""> Short List</a></li>
-                                <li><a href=""> Written List</a></li>
-                                <li><a href=""> Viva List</a></li>
-                                <li><a href=""> Final List</a></li>
+                                <li><a href="{{ route('applied-list') }}"> Applied List</a></li>
+                                <li><a href="{{ route('short-list') }}"> Short List</a></li>
+                                <li><a href="{{ route('written-list') }}"> Written List</a></li>
+                                <li><a href="{{ route('viva-list') }}"> Viva List</a></li>
+                                <li><a href="{{ route('final-list') }}"> Final List</a></li>
                             </ul>
                         </li>
                         <li  class="" data-toggle="collapse" data-target="#demo3">
@@ -148,10 +151,17 @@
         </div>
     </div>
 </div>
+
 <script type="text/javascript" src="{{ asset('back-end/js/jquery-3.3.1.min.js') }}"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="{{ asset('back-end/js/jquery.dataTables.js') }}"></script>
+
 <script type="text/javascript" src="{{ asset('back-end/js/main.js') }}"></script>
 <script type="text/javascript">
     jQuery(document).ready(function($){
+
+        $('#table_id').DataTable();
+
         $('.sidbarMenu li').click(function() {
             $(this).siblings('li').addClass('collapsed');
             $('.sidbarMenu li ul').removeClass('show');
@@ -176,6 +186,9 @@
             });
         });
     }(jQuery));
+
+
+
 </script>
 
 <script type="text/javascript">
@@ -187,6 +200,7 @@
     CKEDITOR.replace( 'editor5' );
     CKEDITOR.add
 </script>
+
 
 </body>
 </html>
