@@ -100,5 +100,9 @@ Route::group(['middleware' => 'auth'], function(){
         'uses' => 'AdvertisementController@finalList',
         'as'   => 'final-list'
     ]);
+    Route::post('appliedListFilter.java',[
+        'uses' => 'AdvertisementController@appliedListFilter',
+        'as'   => 'appliedListFilter'
+    ]);
 
 });
