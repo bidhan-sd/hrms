@@ -58,6 +58,9 @@
                                 <li><a href=""> User Management</a></li>
                                 <li><a href=""> Role Management</a></li>
                                 <li><a href=""> Access Control</a></li>
+                                <li><a href="{{ route('manage-department') }}"> Depertment Setup</a></li>
+                                <li><a href="{{ route('manage-supervisor') }}"> Supervisor list</a></li>
+                                <li><a href="{{ route('manage-departmentHead-setup') }}"> Department HeadList</a></li>
                             </ul>
                         </li>
                         <li  class="" data-toggle="collapse" data-target="#demo2">
@@ -144,7 +147,9 @@
                     </div>
                 </div>
             </div>
-            @yield('body')
+            <div id="app">
+                @yield('body')
+            </div>
             <div class="back-end-footer">
 
             </div>
@@ -201,6 +206,6 @@
     CKEDITOR.add
 </script>
 
-
+<script type="text/javascript" src="{{ asset('/') }}js/app.js"></script>
 </body>
 </html>

@@ -18,5 +18,17 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        name: "bidhan",
+        counter: 0,
+        key: "",
+        category: ""
+    },
+    methods: {
+        onchange: function () {
+            console.log(this.key)
+            alert(this.key)
+        },
+    }
 });

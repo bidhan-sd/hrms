@@ -14,12 +14,12 @@
                 </div>
             @endif
 
-            {{ Form::open(['route'=>'save-vivaList','method'=>'POST','name'=>'vivaListForm','id'=>'vivaListForm']) }}
+            {{ Form::open(['route'=>'assign-employee','method'=>'POST','name'=>'assignEmployeeForm','id'=>'assignEmployeeForm']) }}
 
             <table id="table_id" class="display table table-bordered table-hover table-striped text-center">
                 <thead class="bg-info text-white">
                 <tr>
-                    <th>All <input type="checkbox" id="checkAll" /> </th>
+                    <th> Select </th>
                     <th>Unique Id</th>
                     <th>Post Name</th>
                     <th>Total Exp.</th>
@@ -31,7 +31,11 @@
                 <tbody>
                 @foreach($finalLists as $finalList)
                     <tr>
-                        <td><input type="checkbox" name="checkSingle[]" id="singleCheckAll" value="{{ $finalList->id }}"/></td>
+                        <td>
+                            <input type="checkbox" name="checkSingle" id="singleCheckAll" value="{{ $finalList->id }}"/>
+                            <input type="hidden" name="full_name" id="full_name" value="{{ $finalList->full_name }}"/>
+                            <input type="hidden" name="post_name" id="post_name" value="{{ $finalList->post_name }}"/>
+                        </td>
                         <td>{{ $finalList->unique_apply_id }}</td>
                         <td>{{ $finalList->post_name }}</td>
                         <td>@if($finalList->totalExperince == '') 0 @else {{ $finalList->totalExperince }} @endif</td>

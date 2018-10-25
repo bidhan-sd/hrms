@@ -295,7 +295,7 @@ class AdvertisementController extends Controller {
 
     public function appliedListFilter(Request $request)  {
         //dd($request->all());
-if($request->filter_post_name){
+    if($request->filter_post_name){
         $total_experience = $request->filter_total_experience;
         $filter_skills    = $request->filter_skills;
         $filter_home_town = $request->filter_home_town;
