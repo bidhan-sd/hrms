@@ -21,15 +21,19 @@
                     <th>Supervisor Name</th>
                     <th>Supervisor Department</th>
                     <th>Supervisor Pin</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
+                @php($i=1)
+                @foreach($supervisorss as $supervisors)
                 <tr>
-                    <td>01</td>
-                    <td>Bidhan Sutradhar</td>
-                    <td>Admin</td>
-                    <td>1234</td>
+                    <td>{{ $i++ }}</td>
+                    <td>{{ $supervisors->eName }}</td>
+                    <td>{{ ucwords($supervisors->department_name) }}</td>
+                    <td>{{ $supervisors->supervisor_pin }}</td>
+                    <td>{{ $supervisors->publication_status == 1 ? 'Published' : 'Unpublished' }}</td>
                     <td>
                         <a href="{{ url('single-advertisement') }}" class="btn btn-info btn-sm" title="View">
                             <i class="fas fa-search-plus"></i>
@@ -39,6 +43,7 @@
                         </a>
                     </td>
                 </tr>
+                @endforeach
                 <tbody>
             </table>
 

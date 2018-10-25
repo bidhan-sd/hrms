@@ -46,6 +46,8 @@ class EmployeeController extends Controller
                 'joining_date' => $request->joining_date,
                 'employee_pin' => $request->employee_pin,
                 'active' => 1,
+                'supervisor' => 0,
+                'department_head' => 0,
             ]);
 
             DB::table('online_applies')->where('id', $request->id)->update([
@@ -55,7 +57,6 @@ class EmployeeController extends Controller
             return redirect('manage-employee')->with('message', 'Employee Created !');
         }
     }
-
     public function manageEmployee(){
         $employess = DB::table('employees')
             ->leftJoin('online_applies', 'online_applies.id', '=', 'employees.applied_online_id')
@@ -68,16 +69,4 @@ class EmployeeController extends Controller
         ]);
     }
 
-    public function manageSupervisor(){
-        return view('back-end.supervisor.manage');
-    }
-    public function createSupervisor(){
-        return view('back-end.supervisor.create');
-    }
-    public function saveSupervisor(Request $request){
-        return $request->all();
-    }
-    public function manageDepartmentHeadSetup(){
-        return view('back-end.departmentHead.manage');
-    }
 }

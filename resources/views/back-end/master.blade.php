@@ -9,8 +9,6 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
     <!-- Styles -->
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -160,7 +158,6 @@
 <script type="text/javascript" src="{{ asset('back-end/js/jquery-3.3.1.min.js') }}"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="{{ asset('back-end/js/jquery.dataTables.js') }}"></script>
-
 <script type="text/javascript" src="{{ asset('back-end/js/main.js') }}"></script>
 <script type="text/javascript">
     jQuery(document).ready(function($){
@@ -191,9 +188,6 @@
             });
         });
     }(jQuery));
-
-
-
 </script>
 
 <script type="text/javascript">
@@ -206,6 +200,6 @@
     CKEDITOR.add
 </script>
 
-<script type="text/javascript" src="{{ asset('/') }}js/app.js"></script>
+<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

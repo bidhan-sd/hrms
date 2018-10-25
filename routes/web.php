@@ -160,23 +160,36 @@ Route::group(['middleware' => 'auth'], function(){
 
 
     Route::get('manage-supervisor',[
-        'uses' => 'EmployeeController@manageSupervisor',
+        'uses' => 'SupervisorController@manageSupervisor',
         'as'   => 'manage-supervisor'
     ]);
 
     Route::get('create-supervisor',[
-        'uses' => 'EmployeeController@createSupervisor',
+        'uses' => 'SupervisorController@createSupervisor',
         'as'   => 'create-supervisor'
     ]);
+
+    Route::get('addSupervisor/{employee_id}',[
+        'uses' => 'SupervisorController@addSupervisor',
+        'as'   => 'addSupervisor'
+    ]);
     Route::post('save-supervisor-info',[
-        'uses' => 'EmployeeController@saveSupervisor',
+        'uses' => 'SupervisorController@saveSupervisor',
         'as'   => 'save-supervisor-info'
     ]);
-    Route::get('manage-departmentHead-setup',[
-        'uses' => 'EmployeeController@manageDepartmentHeadSetup',
-        'as'   => 'manage-departmentHead-setup'
+
+    Route::get('create-departmentHead',[
+        'uses' => 'DepartmentHeadController@createDepartmentHead',
+        'as'   => 'create-departmentHead'
     ]);
 
-
+    Route::get('manage-departmentHead-setup',[
+        'uses' => 'DepartmentHeadController@manageDepartmentHeadSetup',
+        'as'   => 'manage-departmentHead-setup'
+    ]);
+    Route::post('save-departmentHead-info',[
+        'uses' => 'DepartmentHeadController@saveDepartmentHead',
+        'as'   => 'save-departmentHead-info'
+    ]);
 
 });

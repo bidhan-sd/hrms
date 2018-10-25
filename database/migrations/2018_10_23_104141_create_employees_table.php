@@ -22,6 +22,8 @@ class CreateEmployeesTable extends Migration
             $table->date('joining_date');
             $table->string('employee_pin');
             $table->tinyInteger('active');
+            $table->tinyInteger('supervisor');
+            $table->tinyInteger('department_head');
             $table->timestamps();
         });
     }

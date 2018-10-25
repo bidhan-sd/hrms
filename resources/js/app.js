@@ -20,15 +20,22 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app',
     data: {
-        name: "bidhan",
-        counter: 0,
-        key: "",
-        category: ""
+        bUrl: 'http://localhost/hrms/public/',
+        employee_id: "",
+        employee: []
     },
     methods: {
-        onchange: function () {
-            console.log(this.key)
-            alert(this.key)
-        },
+        onChange: function (employee_id) {
+            axios.get(this.bUrl + 'addSupervisor/' + employee_id)
+            .then( (response) => {
+                if(response.status === 200){
+                    //console.log(response.data);
+                    app.employee = response.data;
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
     }
 });

@@ -13908,15 +13908,20 @@ Vue.component('example-component', __webpack_require__(39));
 var app = new Vue({
     el: '#app',
     data: {
-        name: "bidhan",
-        counter: 0,
-        key: "",
-        category: ""
+        bUrl: 'http://localhost/hrms/public/',
+        employee_id: "",
+        employee: []
     },
     methods: {
-        onchange: function onchange() {
-            console.log(this.key);
-            alert(this.key);
+        onChange: function onChange(employee_id) {
+            axios.get(this.bUrl + 'addSupervisor/' + employee_id).then(function (response) {
+                if (response.status === 200) {
+                    //console.log(response.data);
+                    app.employee = response.data;
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
         }
     }
 });
