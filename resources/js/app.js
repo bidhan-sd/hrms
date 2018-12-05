@@ -22,11 +22,27 @@ const app = new Vue({
     data: {
         bUrl: 'http://localhost/hrms/public/',
         employee_id: "",
-        employee: []
+        employee: [],
+        employee_pin: '',
     },
     methods: {
         onChange: function (employee_id) {
             axios.get(this.bUrl + 'addSupervisor/' + employee_id)
+            .then( (response) => {
+                if(response.status === 200){
+                    //console.log(response.data);
+                    app.employee = response.data;
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        },
+        keymonitor: function (event){
+            //console.log(event.key);
+            axios.get(this.bUrl + 'searchEmployee/' + id,{
+                id: this.employee_pin
+            })
             .then( (response) => {
                 if(response.status === 200){
                     //console.log(response.data);

@@ -16,17 +16,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('back-end/css/bootstrap.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link href="{{ asset('back-end/css/jquery.dataTables.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 
-    <script src="{{ asset('back-end/ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ asset('back-end/ckeditor/samples/js/sample.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('back-end/ckeditor/samples/css/samples.css') }}">
-    <link rel="stylesheet" href="{{ asset('back-end/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css') }}">
 
+    <link href="{{ asset('back-end/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('back-end/css/back-end-style.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -53,8 +49,8 @@
                         <li class="" data-toggle="collapse" data-target="#demo1">
                             <a id="myLink"> <i class="fas fa-home"></i>Setting <span class="fas fa-chevron-down"></span></a>
                             <ul id="demo1" class="collapse">
-                                <li><a href=""> User Management</a></li>
-                                <li><a href=""> Role Management</a></li>
+                                <li><a href="{{ route('manage-user') }}"> User Management</a></li>
+                                <li><a href="{{ route('manage-role') }}"> Role Management</a></li>
                                 <li><a href=""> Access Control</a></li>
                                 <li><a href="{{ route('manage-department') }}"> Depertment Setup</a></li>
                                 <li><a href="{{ route('manage-supervisor') }}"> Supervisor list</a></li>
@@ -75,7 +71,7 @@
                         <li  class="" data-toggle="collapse" data-target="#demo3">
                             <a  id="myLink"> <i class="fas fa-industry"></i> Employee Info <span class="fas fa-chevron-down"></span></a>
                             <ul id="demo3" class="collapse">
-                                <li><a href=""> Employee Registration</a></li>
+                                <li><a href="{{ route('manage-employee') }}"> Employee Manage</a></li>
                                 <li><a href=""> Employee Details</a></li>
                                 <li><a href=""> Search Employee</a></li>
                                 <li><a href=""> Hierarchy</a></li>
@@ -97,15 +93,6 @@
                                 <li><a href=""> Leave Apply</a></li>
                                 <li><a href=""> Leave Approval</a></li>
                                 <li><a href=""> Find Holiday</a></li>
-                            </ul>
-                        </li>
-                        <li  class="" data-toggle="collapse" data-target="#demo6">
-                            <a  id="myLink"> <i class="fas fa-file-code"></i> Payroll <span class="fas fa-chevron-down"></span></a>
-                            <ul id="demo6" class="collapse">
-                                <li><a href=""> Remuneration</a></li>
-                                <li><a href=""> Payment</a></li>
-                                <li><a href=""> Payment Status</a></li>
-                                <li><a href=""> Payslip</a></li>
                             </ul>
                         </li>
                         <li  class="" data-toggle="collapse" data-target="#demo7">
@@ -190,16 +177,18 @@
     }(jQuery));
 </script>
 
-<script type="text/javascript">
-    initSample();
+
+
+<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+
+<script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+<script>
+    CKEDITOR.replace( 'editor' );
     CKEDITOR.replace( 'editor1' );
     CKEDITOR.replace( 'editor2' );
     CKEDITOR.replace( 'editor3' );
     CKEDITOR.replace( 'editor4' );
     CKEDITOR.replace( 'editor5' );
-    CKEDITOR.add
 </script>
-
-<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

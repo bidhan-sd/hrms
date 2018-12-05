@@ -37,7 +37,7 @@
                         <td>{{ ucwords($employes->department_name) }}</td>
                         <td><img width="50" src="{{ asset($employes->ePhoto) }}"/></td>
                         <td>
-                            <a href="{{ url('single-advertisement',['id' => $employes->id ]) }}" class="btn btn-info btn-sm" title="View">
+                            <a href="{{ url('single-advertisement',['id' => $employes->id ]) }}" class="btn btn-info btn-sm" title="View" data-toggle="modal" data-target="#mymodal{{ $i }}">
                                 <i class="fas fa-search-plus"></i>
                             </a>
                             <a onclick="return confirm('Are you sure to delete!'); "  href="{{ url('delete-advertisement',['id' => $employes->id] ) }}" class="btn btn-danger btn-sm" title="Delete">
@@ -45,10 +45,36 @@
                             </a>
                         </td>
                     </tr>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="mymodal{{ $i }}" tabindex="-1" role="dialog" aria-labelledby="myModalTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <?php $suppervisors = App\supervisor::where('department_name',$employes->department_name)->orderBy('id','DESC')->get() ?>
+                                    @foreach($suppervisors as $suppervisor)
+                                        <p>{{ $suppervisor->supervisor_pin }}</p>
+                                    @endforeach
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal End -->
                 @endforeach
+
+
                 <tbody>
             </table>
-
         </div>
     </div>
 @endsection

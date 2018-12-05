@@ -192,4 +192,57 @@ Route::group(['middleware' => 'auth'], function(){
         'as'   => 'save-departmentHead-info'
     ]);
 
+    Route::get('create-role',[
+        'uses' => 'RoleController@createRole',
+        'as'   => 'create-role'
+    ]);
+    Route::post('save-role-info',[
+        'uses' => 'RoleController@saveRole',
+        'as'   => 'save-role-info'
+    ]);
+    Route::get('manage-role',[
+        'uses' => 'RoleController@manageRole',
+        'as'   => 'manage-role'
+    ]);
+    Route::get('unpublished-role/{id}',[
+        'uses' => 'RoleController@unPublishedRole',
+        'as'   => 'unpublished-role'
+    ]);
+    Route::get('published-role/{id}',[
+        'uses' => 'RoleController@publishedRole',
+        'as'   => 'published-role'
+    ]);
+    Route::get('edit-role/{id}',[
+        'uses' => 'RoleController@editRole',
+        'as'   => 'edit-role'
+    ]);
+
+    Route::post('update-role-info',[
+        'uses' => 'RoleController@updateRole',
+        'as'   => 'update-role-info'
+    ]);
+
+    Route::get('delete-role/{id}',[
+        'uses' => 'RoleController@deleteRole',
+        'as'   => 'delete-role'
+    ]);
+
+    Route::get('create-user',[
+        'uses' => 'UserController@createUser',
+        'as'   => 'create-user'
+    ]);
+    Route::get('manage-user',[
+        'uses' => 'UserController@manageUser',
+        'as'   => 'manage-user'
+    ]);
+/*
+    Route::get('searchEmployee/{id}',[
+        'uses' => 'UserController@searchUser',
+        'as'   => 'searchEmployee'
+    ]);
+    Route::get('manage-employee',[
+        'uses' => 'UserController@searchUser',
+        'as'   => 'manage-employee'
+    ]);*/
+
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+
 class AdvertisementController extends Controller {
 
     public function manageAdvertisement(){

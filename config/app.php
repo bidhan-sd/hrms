@@ -148,7 +148,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-
+        Unisharp\Ckeditor\ServiceProvider::class,
         /*
          * Package Service Providers...
          */
