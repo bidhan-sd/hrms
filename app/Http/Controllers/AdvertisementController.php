@@ -133,6 +133,12 @@ class AdvertisementController extends Controller {
         ]);
     }
 
+    public function SingleAppliedDetails($id){
+        $singleAppliedDetail = DB::table('online_applies')->select()->where('id', '=', $id)->first();
+        //dd($singleAppliedDetail);
+        return view('back-end.applied-list.singleAppliedDetails',['singleAppliedDetail'=>$singleAppliedDetail]);
+    }
+
     public function saveShortList(Request $request){
         $shortListIds = $request->checkSingle;
         //dd($shortListIds);

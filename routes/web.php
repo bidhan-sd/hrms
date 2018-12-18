@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth'], function(){
         'uses' => 'DepartmentController@createDepartment',
         'as'   => 'create-department'
     ]);
+
     Route::post('save-department-info',[
         'uses' => 'DepartmentController@saveDepartment',
         'as'   => 'save-department-info'
@@ -102,6 +103,12 @@ Route::group(['middleware' => 'auth'], function(){
         'uses' => 'AdvertisementController@appliedList',
         'as'   => 'applied-list'
     ]);
+
+    Route::get('single-applied-details/{id}',[
+        'uses' => 'AdvertisementController@SingleAppliedDetails',
+        'as'   => 'single-applied-details'
+    ]);
+
     Route::post('appliedListFilter.java',[
         'uses' => 'AdvertisementController@appliedListFilter',
         'as'   => 'appliedListFilter'
@@ -156,6 +163,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('manage-employee',[
         'uses' => 'EmployeeController@manageEmployee',
         'as'   => 'manage-employee'
+    ]);
+    Route::get('single-employee-details/{id}',[
+        'uses' => 'EmployeeController@singleEmployeeDetails',
+        'as'   => 'single-employee-details'
+    ]);
+    Route::get('search-employee',[
+        'uses' => 'EmployeeController@searchEmployee',
+        'as'   => 'search-employee'
     ]);
 
 
@@ -235,12 +250,37 @@ Route::group(['middleware' => 'auth'], function(){
         'uses' => 'UserController@manageUser',
         'as'   => 'manage-user'
     ]);
-/*
-    Route::get('searchEmployee/{id}',[
+
+    Route::post('searchEmployee',[
         'uses' => 'UserController@searchUser',
         'as'   => 'searchEmployee'
     ]);
-    Route::get('manage-employee',[
+    Route::post('save-userInfo',[
+        'uses' => 'UserController@storeUser',
+        'as'   => 'save-userInfo'
+    ]);
+    Route::get('unpublished-user/{id}',[
+        'uses' => 'UserController@UnpublishedUser',
+        'as'   => 'unpublished-user'
+    ]);
+    Route::get('published-user/{id}',[
+        'uses' => 'UserController@PublishedUser',
+        'as'   => 'published-user'
+    ]);
+    Route::post('save-assignSupervisor-info',[
+        'uses' => 'EmployeeController@assignSupervisor',
+        'as'   => 'save-assignSupervisor-info'
+    ]);
+    Route::post('update-singleEmployee-info',[
+        'uses' => 'EmployeeController@updateSingleEmployeeInfo',
+        'as'   => 'update-singleEmployee-info'
+    ]);
+    Route::get('single-employee-details-view/{id}',[
+        'uses' => 'EmployeeController@singleEmployeeDetailsView',
+        'as'   => 'single-employee-details-view'
+    ]);
+    /*
+    Route::post('save-userInfo',[
         'uses' => 'UserController@searchUser',
         'as'   => 'manage-employee'
     ]);*/

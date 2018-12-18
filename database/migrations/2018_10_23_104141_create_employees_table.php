@@ -23,6 +23,7 @@ class CreateEmployeesTable extends Migration
             $table->string('employee_pin');
             $table->tinyInteger('active');
             $table->tinyInteger('supervisor');
+            $table->string('assign_supervisor')->nullable();
             $table->tinyInteger('department_head');
             $table->timestamps();
         });

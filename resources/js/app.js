@@ -20,10 +20,12 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app',
     data: {
+        msg: "",
         bUrl: 'http://localhost/hrms/public/',
         employee_id: "",
         employee: [],
         employee_pin: '',
+        assignSupervisor_name: ''
     },
     methods: {
         onChange: function (employee_id) {
@@ -38,13 +40,27 @@ const app = new Vue({
                 console.log(error);
             });
         },
-        keymonitor: function (event){
-            //console.log(event.key);
-            axios.get(this.bUrl + 'searchEmployee/' + id,{
+        getEmployeeValues: function (){
+            //console.log(this.employee_pin);
+            axios.post(this.bUrl + '/searchEmployee',{
                 id: this.employee_pin
             })
             .then( (response) => {
                 if(response.status === 200){
+                    //console.log(response.data);
+                    this.employee_pin = "";
+                    app.employee = response.data;
+                }
+            })
+            .catch(function (error) {
+                app.msg = "Record Not Found !";
+            });
+        },
+
+        assignSupervisor: function (assignSupervisor_name) {
+        axios.get(this.bUrl + 'addSupervisor/' + assignSupervisor_name)
+            .then( (response) => {
+                    if(response.status === 200){
                     //console.log(response.data);
                     app.employee = response.data;
                 }

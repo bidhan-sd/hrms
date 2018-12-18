@@ -23,6 +23,7 @@
 
 
     <link href="{{ asset('back-end/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('front-end/css/font-end-style.css') }}" rel="stylesheet">
     <link href="{{ asset('back-end/css/back-end-style.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -31,7 +32,7 @@
         <div class="col-md-3">
             <div class="back-end-sidebar">
                 <div class="sidebarHeadding">
-                    <h2><i class="fas fa-paw"></i>Dashboard</h2>
+                    <h2><i class="fas fa-paw"></i><a style="text-decoration: none;color:#fff;" href="{{ url('/home') }}">Dashboard</a></h2>
                 </div>
                 <div class="personalInfo">
                     <div class="row">
@@ -40,7 +41,7 @@
                         </div>
                         <div class="col-7">
                             <small>Welcome</small>
-                            <h3>Bidhan Sutradhar</h3>
+                            <h3>{{ Auth::user()->name }}</h3>
                         </div>
                     </div>
                 </div>
@@ -72,8 +73,10 @@
                             <a  id="myLink"> <i class="fas fa-industry"></i> Employee Info <span class="fas fa-chevron-down"></span></a>
                             <ul id="demo3" class="collapse">
                                 <li><a href="{{ route('manage-employee') }}"> Employee Manage</a></li>
-                                <li><a href=""> Employee Details</a></li>
-                                <li><a href=""> Search Employee</a></li>
+                                @if(Auth::user()->role == 1)
+                                <li><a href="{{ url('single-employee-details-view',['id' => Auth::user()->employeeId ]) }}"> Employee Details</a></li>
+                                @endif
+                                <li><a href="{{ route('search-employee') }}"> Search Employee </a></li>
                                 <li><a href=""> Hierarchy</a></li>
                             </ul>
                         </li>
@@ -117,7 +120,7 @@
                         <ul class="back-end-header-menu">
                             <li><a><i class="fas fa-comment-alt"></i></a></li>
                             <li><a><i class="fas fa-bell"></i></a></li>
-                            <li><a><i class="fas fa-user-tie"></i> Bidhan Sutradhar <span class="fas fa-chevron-down"> </span></a>
+                            <li><a><i class="fas fa-user-tie"></i> {{ Auth::user()->name }} <span class="fas fa-chevron-down"> </span></a>
                                 <ul>
                                     <li><a href="">Setting<i class="fas fa-cog "></i></a></li>
                                     <li><a href="">Profile<i class="fas fa-user-tie"></i></a></li>

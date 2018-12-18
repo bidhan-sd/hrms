@@ -37,7 +37,7 @@ class RoleController extends Controller
     }
     public function publishedRole($id){
         DB::table('roles')->where('id',$id)->update([
-            'publication_status' => 0
+            'publication_status' => 1
         ]);
         return redirect('manage-role')->with('message','Role Published !');
     }

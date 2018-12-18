@@ -56,7 +56,7 @@ class FrontendController extends Controller
 
 
     public function saveOnlineApply(Request $request){
-        //$this->validationOnlineApply($request);
+        $this->validationOnlineApply($request);
 
         if($request->hasFile('photo') && $request->hasFile('signature')) {
 
@@ -95,7 +95,6 @@ class FrontendController extends Controller
                     //return [$photoUrl,$signatureUrl];
 
                     DB::table('online_applies')->insert([
-
                         'unique_apply_id' => str_random(20),
                         'post_id' => $request->post_id,
                         'post_name' => $request->post_name,
@@ -210,4 +209,5 @@ class FrontendController extends Controller
             }
         }
     }
+
 }

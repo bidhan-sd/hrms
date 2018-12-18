@@ -20,7 +20,7 @@
                     <tbody>
                     <tr>
                         <td>
-                            <b>Post Name </b>
+                            <b>Post Name <span class="text-danger">*</span></b>
                             <select name="filter_post_name" id="filter_post_name" class="form-control">
                                 <option value="0"> Select </option>
                                 <?php $post_names = \App\Advertisement::select("post_name")->where('publication_status',1)->get(); ?>
@@ -144,7 +144,7 @@
                                     <td><img src="{{ asset($applied_list->photo) }}" width="50" alt="Applicant Image"/></td>
 
                                     <td>
-                                        <a href="{{ url('single-advertisement',['id' => $applied_list->id ]) }}" class="btn btn-info btn-sm" title="View">
+                                        <a href="{{ url('single-applied-details',['id' => $applied_list->id ]) }}" class="btn btn-info btn-sm" title="View">
                                             <i class="fas fa-search-plus"></i>
                                         </a>
                                         <a onclick="return confirm('Are you sure to delete!'); "  href="{{ url('delete-advertisement',['id' => $applied_list->id] ) }}" class="btn btn-danger btn-sm" title="Delete">
