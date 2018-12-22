@@ -10,7 +10,7 @@
                         <div class="bg-success  p-2">
                             <h4 class="text-white font-weight-bold m-0">Name of the Position :
                                 <span class="text-warning" style="font-size:17px;text-align:left !important;">{{ $singleEmployeeDetail->degination }}</span>
-                                <b style="font-size:13px;float:right;margin-top:5px">You must fill Red (<span class="text-danger">*</span>) Indicates incorrect information.</b></h4>
+
                         </div>
 
                         <div class="mt-3 col-md-12"></div>
@@ -74,7 +74,7 @@
                                     <b>National Id No</b> {{ $singleEmployeeDetail->national_id_no }}
                                 </div>
                                 <div class="col-md-3">
-                                    <b>Mobile</b> {{ $singleEmployeeDetail->mobile_number }}
+                                    <b>Mobile</b> 0{{ $singleEmployeeDetail->mobile_number }}
                                 </div>
                                 <div class="col-md-3">
                                     <b>Email Address</b> {{ $singleEmployeeDetail->email_address }}

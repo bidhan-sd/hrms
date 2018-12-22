@@ -60,7 +60,7 @@
                                         @endif
                                 </div>
                                 <div class="col-md-3">
-                                    <b>Mobile</b> : {{ $singleAppliedDetail->mobile_number }}
+                                    <b>Mobile</b> : 0{{ $singleAppliedDetail->mobile_number }}
                                 </div>
                                 <div class="col-md-3">
                                     <b>Email Address </b> : {{ $singleAppliedDetail->email_address }}

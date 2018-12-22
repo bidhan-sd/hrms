@@ -3,7 +3,7 @@
     <div class="back-end-mainContent">
         <div class="main_heading">
             <h2>Employee List</h2>
-            <a href="{{ route('create-advertisement') }}" class="btn btn-success btn-sm">Create Employee</a>
+            <a href="{{ url('offline-create-employee') }}" class="btn btn-success btn-sm">Create Employee</a>
         </div>
         <div class="main_content  bg-white">
             <?php $message = Session::get('message') ?>
@@ -51,7 +51,7 @@
 
                                 <option>Select Option</option>
                                 @foreach($suppervisors as $suppervisor)
-                                    <option value="{{ $suppervisor->employee_name  }}" <?php if($suppervisor->employee_name == $suppervisor->assign_supervisor){ echo ' selected="selected"';} ?> >{{ $suppervisor->employee_name }}</option>
+                                    <option value="{{ $suppervisor->employee_name  }}" @if($employes->assign_supervisor == $suppervisor->employee_name) selected="selected" @endif >{{ $suppervisor->employee_name }}</option>
                                 @endforeach
                             </select>
 

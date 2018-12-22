@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>HRMS</title>
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
     <!-- Styles -->
@@ -16,8 +17,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <link href="{{ asset('back-end/css/jquery.dataTables.css') }}" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 
@@ -25,6 +25,7 @@
     <link href="{{ asset('back-end/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('front-end/css/font-end-style.css') }}" rel="stylesheet">
     <link href="{{ asset('back-end/css/back-end-style.css') }}" rel="stylesheet">
+
 </head>
 <body>
 <div class="container-fluid totalBody">
@@ -32,7 +33,10 @@
         <div class="col-md-3">
             <div class="back-end-sidebar">
                 <div class="sidebarHeadding">
-                    <h2><i class="fas fa-paw"></i><a style="text-decoration: none;color:#fff;" href="{{ url('/home') }}">Dashboard</a></h2>
+                    <h2>
+                        <i class="fas fa-paw"></i>
+                        <a style="text-decoration: none;color: #ffffff;" href="{{ url('/home') }}">Dashboard</a>
+                    </h2>
                 </div>
                 <div class="personalInfo">
                     <div class="row">
@@ -73,11 +77,11 @@
                             <a  id="myLink"> <i class="fas fa-industry"></i> Employee Info <span class="fas fa-chevron-down"></span></a>
                             <ul id="demo3" class="collapse">
                                 <li><a href="{{ route('manage-employee') }}"> Employee Manage</a></li>
-                                @if(Auth::user()->role == 1)
+                                @if(Auth::check() && Auth::user()->role != 1)
                                 <li><a href="{{ url('single-employee-details-view',['id' => Auth::user()->employeeId ]) }}"> Employee Details</a></li>
                                 @endif
-                                <li><a href="{{ route('search-employee') }}"> Search Employee </a></li>
-                                <li><a href=""> Hierarchy</a></li>
+                                <li><a href="{{ url('search-employee') }}"> Search Employee</a></li>
+                                {{--<li><a href=""> Hierarchy</a></li>--}}
                             </ul>
                         </li>
                         <li  class="" data-toggle="collapse" data-target="#demo4">
@@ -144,11 +148,11 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript" src="{{ asset('back-end/js/jquery-3.3.1.min.js') }}"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-<script type="text/javascript" src="{{ asset('back-end/js/jquery.dataTables.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+{{--<script type="text/javascript" src="{{ asset('back-end/js/jquery-3.3.1.min.js') }}"></script>--}}
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="{{ asset('back-end/js/main.js') }}"></script>
+
 <script type="text/javascript">
     jQuery(document).ready(function($){
 
@@ -161,7 +165,7 @@
             $(this).addClass('active');
         });
         $(".sidbarMenu li ul li a").click(function() {
-            if($(this).attr("href")==window.location.href){
+            if($(this).attr("href")== window.location.href){
                 $(this).attr("class","dropdown");
                 $(".sidbarMenu li").addClass("dropdown");
             }
@@ -177,13 +181,12 @@
                 'visibility' : 'visible'
             });
         });
+
     }(jQuery));
 </script>
 
 
-
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-
 <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
 <script>
     CKEDITOR.replace( 'editor' );
@@ -193,5 +196,6 @@
     CKEDITOR.replace( 'editor4' );
     CKEDITOR.replace( 'editor5' );
 </script>
+
 </body>
 </html>
